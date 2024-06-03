@@ -1,2 +1,13 @@
 npm init -y
-npm i bcrypt connect-mongo cookie-parser dotenv ejs express express-ejs-layouts express-session jsonwebtoken method-override mongoose
+npm i bcrypt connect-mongo cookie-parser dotenv ejs express express-ejs-layouts express-session jsonwebtoken method-override mongoose nodemon
+
+after installing dependencies start the server writing basic express server and listening to server then start defining routes
+
+import expressLayouts as well
+
+
+app.use(expressLayout);
+app.set('layout','./layouts/main');
+app.set('view engine','ejs');
+
+app.use(express.static('public'));
