@@ -1,1 +1,23 @@
-<h1>home</h1>
+<div class="author">
+    <h1 class="author_heading">Hi I am Piyush</h1>
+    <p class="author_body">Web developer</p>
+</div>
+
+<img src="/img/z.avif" alt="" class="hero-image">
+
+<section class="articles">
+    <h2 class="articles__heading">Latest Posts</h2>
+
+    <ul class="article-ul">
+        <% data.forEach(eleme =>{ %>
+        <li>
+            <a href="#">
+                <span><%= eleme.title %> </span><span class="article-list__date"><%= eleme.createdAt %></span>
+            </a>
+        </li>
+
+        <% }) %>
+    </ul>
+
+    <a href="#" class="pagination">&lt; View Older Posts</a>
+</section>
