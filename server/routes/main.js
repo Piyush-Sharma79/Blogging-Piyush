@@ -8,19 +8,53 @@ const Post = require('../models/post');
 
 
 router.get('/', async(req,res)=>{
-    const locals = {
-        title: 'Home',
-        description: 'This is the home page'
-    }
+    
     try{
-        const data = await Post.find();
-        res.render('index',{locals,data});
+        const locals = {
+            title: 'Home',
+            description: 'This is the home page'
+        }
+
+
+        let prPage = 9;
+        let page = req.query.page ||1;
+//pagination important
+        const data = await Post.aggregate([{$sort:{createdAt:-1}}])
+        .skip(prPage*page - prPage)
+        .limit(prPage)
+        .exec();
+
+        const count = await Post.countDocuments();
+        const nextPage = parseInt(page)+1;
+        const hasnextPage = nextPage <= Math.ceil(count/prPage);
+
+
+
+
+
+        res.render('index',{locals,data,current:page,nextPage:hasnextPage?nextPage:null});
     }catch(error){
         console.log(error);
     }
 
     
 });
+
+
+// router.get('/', async(req,res)=>{
+    // const locals = {
+        // title: 'Home',
+        // description: 'This is the home page'
+    // }
+    // try{
+        // const data = await Post.find();
+        // res.render('index',{locals,data});
+    // }catch(error){
+        // console.log(error);
+    // }
+
+    
+// });
 
 //get-about
 
