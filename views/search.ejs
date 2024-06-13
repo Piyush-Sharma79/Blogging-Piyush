@@ -1,8 +1,16 @@
-<div class="searchBar">
-    <div class="container">
-        <form action="/search" class="search__form" role="search" method="POST">
-            <input type="search" aria-label="serach" id="searchInput" name="searchTerm" placeholder="Search the site..." >
-        </form>
-        <div class="searchClose">Close</div>
-    </div>
+<div class="author">
+    <h1 class="author__heading">Search Results</h1>
 </div>
+
+<section class="articles">
+    <ul class="article-ul">
+        <% data.forEach(eleme =>{ %>
+        <li>
+            <a href="/post/<%= eleme._id %>">
+                <span><%= eleme.title %> </span><span class="article-list__date" style="display:flex; align-items:center;"><%= eleme.createdAt.toDateString() %><button class="button type1" style="width:80px; height:30px; margin-left:18px;"><span></span>Likes:<%= eleme.likes %></span></button></span>
+            </a>
+        </li>
+
+        <% }) %>
+    </ul>
+</section>
