@@ -12,8 +12,14 @@
         <% data.forEach(eleme =>{ %>
         <li>
             <a href="/post/<%= eleme._id %>">
-                <span><%= eleme.title %> </span><span class="article-list__date" style="display:flex; align-items:center;"><%= eleme.createdAt.toDateString() %><button class="button type1" style="width:80px; height:30px; margin-left:18px;"><span></span>Likes:<%= eleme.likes %></span></button></span>
+                <span><%= eleme.title %> </span>
+                <span class="article-list__date" style="display:flex; align-items:center;"><%= eleme.createdAt.toDateString() %>
+                    
+                </span>
             </a>
+            <button class="button type1" style="width:80px; height:30px; margin-left:18px;">
+                <span onclick="">Likes:<%= eleme.likes %></span>
+            </button>
         </li>
 
         <% }) %>
