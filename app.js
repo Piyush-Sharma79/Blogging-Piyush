@@ -5,8 +5,9 @@ const expressLayout = require('express-ejs-layouts');
 const cookieParser = require('cookie-parser');
 const MongoStore = require('connect-mongo');
 const sessions = require('express-session');
+const methodOverride = require('method-override')
 
-
+const {isActiveRoute} = require('./server/helpers/routeHelper');
 
 const connectDB = require('./server/config/db');
 const app = express();
@@ -18,6 +19,7 @@ connectDB();
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(cookieParser());
+app.use(methodOverride('_method'));
 
 app.use(sessions({
     secret: 'keyboard cat',
@@ -40,6 +42,8 @@ app.set('view engine','ejs');
 
 app.use('/',require('./server/routes/main'));
 app.use('/',require('./server/routes/admin'));
+
+app.locals.isActiveRoute = isActiveRoute;
 
 app.listen(PORT,()=>{
     console.log(`Server is running on port ${PORT}`);

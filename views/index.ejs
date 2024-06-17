@@ -10,16 +10,15 @@
 
     <ul class="article-ul">
         <% data.forEach(eleme =>{ %>
-        <li>
-            <a href="/post/<%= eleme._id %>">
+        <li style="display:flex; justify-content:space-between;">
+            <a href="/post/<%= eleme._id %>" style="flex:1">
                 <span><%= eleme.title %> </span>
                 <span class="article-list__date" style="display:flex; align-items:center;"><%= eleme.createdAt.toDateString() %>
                     
                 </span>
             </a>
-            <button class="button type1" style="width:80px; height:30px; margin-left:18px;">
-                <span onclick="">Likes:<%= eleme.likes %></span>
-            </button>
+            <form action="/liked/<%= eleme._id %>" method="POST" class="vutton type1">
+                <input type="submit" value="Like <%= eleme.likes %>" class=" vtn-text vutton type1"></form>
         </li>
 
         <% }) %>

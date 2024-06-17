@@ -32,7 +32,7 @@ router.get('/', async(req,res)=>{
 
 
 
-        res.render('index',{locals,data,current:page,nextPage:hasnextPage?nextPage:null});
+        res.render('index',{locals,data,current:page,nextPage:hasnextPage?nextPage:null,currentRoute:'/'});
     }catch(error){
         console.log(error);
     }
@@ -70,7 +70,7 @@ router.get('/post/:id',async (req,res)=>{
             description: 'This is the post page'
         }
 
-        res.render('post',{locals,data});
+        res.render('post',{locals,data,currentRoute:`/post/${slug}`});
     }
     catch(error){
         console.log(error);
@@ -115,7 +115,7 @@ router.get('/about',async (req,res)=>{
         title: 'About',
         description: 'This is the about page'
     }
-    res.render('about',{locals});    
+    res.render('about',{locals,currentRoute:/about/});    
 });
 
 //get-contact
@@ -125,23 +125,23 @@ router.get('/contact',(req,res)=>{
         title: 'Contact',
         description: 'This is the contact page'
     }
-    res.render('contact',{locals});
+    res.render('contact',{locals,currentRoute:/contact/});
 });
 
 
 // function insertPostData(){
 //     Post.insertMany([
 //         {
-//             title: 'Post 1',
-//             body: 'This is the body of post 1'
+//             title:'Nodejs is awesome',
+//             body:'Node.js is an open-source, cross-platform, back-end JavaScript runtime environment that runs on the V8 engine and executes JavaScript code outside a web browser.',
 //         },
 //         {
-//             title: 'Post 2',
-//             body: 'This is the body of post 2'
+//             title:'Express is awesome',
+//             body:'Express.js, or simply Express, is a back end web application framework for Node.js, released as free and open-source software under the MIT License.',
 //         },
 //         {
-//             title: 'Post 3',
-//             body: 'This is the body of post 3'
+//             title:'MongoDB is awesome',
+//             body:'MongoDB is a source-available cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas.',
 //         }
 //     ])
 // }

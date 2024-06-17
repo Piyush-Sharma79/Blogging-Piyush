@@ -373,6 +373,17 @@ img {
     border-radius: 30px;
     color: #333;
   }
+  .vutton{
+    height: 40px;
+    width: 80px;
+    position: relative;
+    background-color: transparent;
+    cursor: pointer;
+    border: 2px solid #252525;
+    overflow: hidden;
+    border-radius: 30px;
+    color: #333;
+  }
   .type1{
     display:flex;
     align-items: center;
@@ -382,7 +393,9 @@ img {
     font-weight: 800;
     letter-spacing: 4px;
   }
-  
+  .vtn-text{
+    font-weight:800;
+  }
   .type1::after {
     content: "";
     position: absolute;
@@ -403,7 +416,11 @@ img {
     color: #fff;
     border: none;
   }
-  
+  .vutton:hover {
+    box-shadow: 1px 1px 200px #252525;
+    color: #fff;
+    border: none;
+  }
   .type1:hover::after {
     visibility: visible;
     transform: scale(100) translateX(2px);
