@@ -70,7 +70,7 @@ router.get('/post/:id',async (req,res)=>{
             description: 'This is the post page'
         }
 
-        res.render('post',{locals,data,currentRoute:`/post/${slug}`});
+        res.render('post',{locals,data});
     }
     catch(error){
         console.log(error);

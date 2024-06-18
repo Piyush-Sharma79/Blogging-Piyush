@@ -28,6 +28,7 @@ const authMiddleware = (req,res,next)=>{
 }
 
 const adminLayout = '../views/layouts/admin';
+const adminRegLayout = '../views/layouts/admin-reg';
 //get - admin
 
 router.get('/admin',function(req,res){
@@ -36,12 +37,25 @@ router.get('/admin',function(req,res){
             title: 'Admin',
             description: 'Admin page',
         }
-        res.render('admin/index',{locals,layout: adminLayout});
+        res.render('admin/index',{locals,layout: adminRegLayout});
     }
     catch(error){
         console.log(error);
     }
 })     
+
+router.get('/admin/register',function(req,res){
+    try{
+        const locals ={
+            title: 'Register',
+            description: 'Register page',
+        }
+        res.render('admin/registr',{locals,layout: adminRegLayout});
+    }
+    catch(error){
+        console.log(error);
+    }
+})
 
 //post - admin
 
@@ -76,8 +90,8 @@ router.get('/dashboard',authMiddleware,async function(req,res){
             description: 'Dashboard page',
         }
         const data = await Post.find();  
-
-        res.render('admin/dashoard',{locals,data,layout: adminLayout});
+        const user = await User.findOne({_id:req.userId});
+        res.render('admin/dashoard',{locals,data,layout: adminLayout,user});
     }
     catch(error){
         console.log(error);
@@ -91,7 +105,7 @@ router.post('/admin/register', async (req,res)=>{
     
         try{
             const user = await User.create({ username,password:hashedPassword});
-            res.status(201).json({message:'User created ',user});
+            res.send('User created');
             
         }
         catch(error){
