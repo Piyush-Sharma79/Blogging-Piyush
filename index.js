@@ -5,7 +5,8 @@ const expressLayout = require('express-ejs-layouts');
 const cookieParser = require('cookie-parser');
 const MongoStore = require('connect-mongo');
 const sessions = require('express-session');
-const methodOverride = require('method-override')
+const methodOverride = require('method-override');
+const cors = require('cors');
 
 const {isActiveRoute} = require('./server/helpers/routeHelper');
 
@@ -20,6 +21,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(cookieParser());
 app.use(methodOverride('_method'));
+app.use(cors());
 
 app.use(sessions({
     secret: 'keyboard cat',
