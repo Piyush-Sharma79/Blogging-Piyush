@@ -390,8 +390,8 @@ img {
     justify-content: center;
   }
   .btn-txt {
-    font-weight: 800;
-    letter-spacing: 4px;
+    font-weight:800px;
+    font-size:15px;
   }
   .vtn-text{
     font-weight:800;
